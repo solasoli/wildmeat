@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use AppKingdom;
-use AppPhylum;
-use AppClass;
-use AppOrder;
-use AppFamilia;
-use AppGenus;
-use AppSpecies;
-use AppVernacular;
+use App\Kingdom;
+use App\Phylum;
+use App\Classes;
+use App\Order;
+use App\Familia;
+use App\Genus;
+use App\Species;
+use App\Vernacular;
 
 class TaxonController extends Controller
 {
     public function kingdom(){
       $kingdom = Kingdom::all();
-      return view('search', compact('kingdom')); 
+      return view('filter',['kingdom'=>$kingdom]); 
     }
 
     public function phylum(){

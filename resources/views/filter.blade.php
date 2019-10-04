@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Indonesia</title>
+    <title>Wildmeat App</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -17,38 +17,64 @@
   <body>
     <div class="container">
       <div class="col-lg-4">
-        <h2>Laravel 5.5 JQuery Ajax Example</h2>
+        <h2>Taxon</h2>
         {{ Form::open() }}
           <div class="form-group">
-            <label for="">Your Provinces</label>
-            <select class="form-control" name="provinces" id="provinces">
-              <option value="0" disable="true" selected="true">=== Select Provinces ===</option>
+            <label for="">Kingdom</label>
+            <input list="kingdom" placeholder="Select Kingdom">
+            <datalist id="kingdom">
+            <option value="">test me</option>
                 @foreach ($kingdom as $key => $value)
                   <option value="{{$value->id}}">{{ $value->kingdom_name }}</option>
                 @endforeach
-            </select>
+            </datalist>
           </div>
 
           <div class="form-group">
-            <label for="">Your Regencies</label>
+            <label for="">Phylum</label>
             <select class="form-control" name="regencies" id="regencies">
-              <option value="0" disable="true" selected="true">=== Select Regencies ===</option>
+              <option value="0" disable="true" selected="true">Select Phylum</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="">Your Districts</label>
+            <label for="">Class</label>
+            
             <select class="form-control" name="districts" id="districts">
-              <option value="0" disable="true" selected="true">=== Select Districts ===</option>
+              <option value="0" disable="true" selected="true">Select Class</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="">Your Villages</label>
+            <label for="">Order</label>
             <select class="form-control" name="villages" id="villages">
-              <option value="0" disable="true" selected="true">=== Select Villages ===</option>
+              <option value="0" disable="true" selected="true">Select Order</option>
             </select>
           </div>
+
+          <div class="form-group">
+            <label for="">Familia</label>
+            <select class="form-control" name="villages" id="villages">
+              <option value="0" disable="true" selected="true">=== Select Familia ===</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label for="">Genus</label>
+            <select class="form-control" name="villages" id="villages">
+              <option value="0" disable="true" selected="true">=== Select Genus ===</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="">Species</label>
+            <select class="form-control" name="villages" id="villages">
+              <option value="0" disable="true" selected="true">=== Select Species ===</option>
+            </select>
+          </div>
+
+
 
         {{ Form::close() }}
       </div>

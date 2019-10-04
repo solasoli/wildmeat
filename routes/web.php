@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('filter');
-});
+Route::get('/' , "TaxonController@kingdom");

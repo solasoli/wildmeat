@@ -23,45 +23,53 @@
             <label for="">Kingdom</label>
             <input list="kingdom" placeholder="Select Kingdom">
             <datalist id="kingdom">
-            <option value="">test me</option>
-                @foreach ($kingdom as $key => $value)
-                  <option value="{{$value->id}}">{{ $value->kingdom_name }}</option>
+            
+                @foreach ($kingdom as $kingdom_name)
+                  @foreach ( $kingdom as $aa)
+                  <option value="{{ $aa->kingdom_name }}">{{ $kingdom_name->kingdom_name }}</option>
+                  @endforeach
                 @endforeach
             </datalist>
           </div>
 
+          
+
+          
+
           <div class="form-group">
             <label for="">Phylum</label>
-            <select class="form-control" name="regencies" id="regencies">
-              <option value="0" disable="true" selected="true">Select Phylum</option>
+            <select class="form-control" name="phylum_name" id="phylum">
+           
+              <option value="" disable="true" selected="true"></option>
+            
             </select>
           </div>
 
           <div class="form-group">
             <label for="">Class</label>
             
-            <select class="form-control" name="districts" id="districts">
+            <select class="form-control" name="class_name" id="class">
               <option value="0" disable="true" selected="true">Select Class</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="">Order</label>
-            <select class="form-control" name="villages" id="villages">
+            <select class="form-control" name="order_name" id="order">
               <option value="0" disable="true" selected="true">Select Order</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="">Familia</label>
-            <select class="form-control" name="villages" id="villages">
+            <select class="form-control" name="familia_name" id="familia">
               <option value="0" disable="true" selected="true">=== Select Familia ===</option>
             </select>
             </div>
 
             <div class="form-group">
             <label for="">Genus</label>
-            <select class="form-control" name="villages" id="villages">
+            <select class="form-control" name="genus_name" id="genus">
               <option value="0" disable="true" selected="true">=== Select Genus ===</option>
             </select>
           </div>
@@ -69,7 +77,7 @@
 
           <div class="form-group">
             <label for="">Species</label>
-            <select class="form-control" name="villages" id="villages">
+            <select class="form-control" name="species_name" id="species">
               <option value="0" disable="true" selected="true">=== Select Species ===</option>
             </select>
           </div>
@@ -83,37 +91,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+    
+
     <script type="text/javascript">
-      $('#provinces').on('change', function(e){
+      $('#kingdom').on('change', function(e){
         console.log(e);
-        var province_id = e.target.value;
-        $.get('/json-regencies?province_id=' + province_id,function(data) {
+        var kingdom_name = e.target.value;
+        $.get('/json-kingdom?kingdom_id=' + kingdom_id,function(data) {
           console.log(data);
-          $('#regencies').empty();
-          $('#regencies').append('<option value="0" disable="true" selected="true">=== Select Regencies ===</option>');
+          
+          $('#kingdom').append('<option value="0" disable="true" selected="true">=== Select Phylum ===</option>');
 
-          $('#districts').empty();
-          $('#districts').append('<option value="0" disable="true" selected="true">=== Select Districts ===</option>');
+          $('#class').empty();
+          $('#class').append('<option value="0" disable="true" selected="true">=== Select Districts ===</option>');
 
-          $('#villages').empty();
-          $('#villages').append('<option value="0" disable="true" selected="true">=== Select Villages ===</option>');
+          $('#order').empty();
+          $('#order').append('<option value="0" disable="true" selected="true">=== Select Villages ===</option>');
 
           $.each(data, function(index, regenciesObj){
-            $('#regencies').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
+            $('#phylum').append('<option value="'+ phylumObj.id +'">'+ phylum.name +'</option>');
           })
         });
       });
 
-      $('#regencies').on('change', function(e){
+      $('#phylum').on('change', function(e){
         console.log(e);
-        var regencies_id = e.target.value;
-        $.get('/json-districts?regencies_id=' + regencies_id,function(data) {
+        var phylum_id = e.target.value;
+        $.get('/json-phylum?phylum_name=' + phylum_id,function(data) {
           console.log(data);
-          $('#districts').empty();
-          $('#districts').append('<option value="0" disable="true" selected="true">=== Select Districts ===</option>');
+          $('#class').empty();
+          $('#class').append('<option value="0" disable="true" selected="true">=== Select Districts ===</option>');
 
           $.each(data, function(index, districtsObj){
-            $('#districts').append('<option value="'+ districtsObj.id +'">'+ districtsObj.name +'</option>');
+            $('#class').append('<option value="'+ classObj.id +'">'+ classObj.name +'</option>');
           })
         });
       });

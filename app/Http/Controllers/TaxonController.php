@@ -12,6 +12,7 @@ use App\Familia;
 use App\Genus;
 use App\Species;
 use App\Vernacular;
+use DB;
 
 class TaxonController extends Controller
 {
@@ -21,9 +22,8 @@ class TaxonController extends Controller
     }
 
     public function phylum(){
-      $kingdom_id = Input::get('kingdom_id');
-      $phylum = Phylum::where('kingdom_id', '=', $kingdom_id)->get();
-      return response()->json($phylum);
+      $phylum = Phylum::all();
+      return view('filter', ['phylum'=>$phylum]);
     }
 
     public function class(){
